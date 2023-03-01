@@ -2,7 +2,7 @@
 <html>
  <title>Lab 06</title>
 <body>
-<h1>Painter entry Trinadh Machanavazzala</h1>
+<h1>Painter entry by Trinadh Machanavazzala</h1>
 <h2>Getting input</h2>
 
 <form>
@@ -17,11 +17,15 @@
 <p id="result"></p>
 <h2 id="counter"></h2>
 <br>
+<div class="container">
+    <img id="Img" src="plants/iris.jpg" onclick="selectImage()" style="height: 100px;width: 100px;">
+</div>
 
 <script> 
 let count = 1;
 let good = 0;
 let oops = 0;
+let useImage = 1;
 function checkPainter(){
     console.log("Checking form Values form values")
     hideEle = document.getElementById("formcheck").value;
@@ -40,9 +44,25 @@ function checkPainter(){
             alert(`Values were not confirmed`);
             coun.innerHTML = ++oops;
         };
+    }   
+}
+
+function selectImage(){
+        switch(useImage){
+        case 1 : document.querySelector("Img").src = ("plants/iris.jpg");
+        useImage++;
+        break;
+        case 2 : document.querySelector("Img").src = ("plants/chinaPink.jpg");
+        useImage++;
+        break;
+      default: document.querySelector("Img").src = ("plants/million-gold.jpg");
+      useImage=1;
     }
     
-}
+};
+
+
+
 </script>
 
 </body>

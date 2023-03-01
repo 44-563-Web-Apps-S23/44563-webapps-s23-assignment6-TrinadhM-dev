@@ -1,0 +1,84 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy File</title>
+</head>
+<body>
+    <h2>Trinadh chooses candy</h2>
+    <form>
+        <input type="checkbox" id="darkchoco" name="color" value="True"   
+          checked >
+        <label for="darkValue">Dark Chocolate</label></br>
+      
+        <input type="checkbox" id="nuts" name="color" 
+           value="True">
+        <label for="nutValue">Nuts</label></br>
+      
+        <input type="checkbox" id="chewy" name="color"   
+           value="False">
+        <label for="chewyValue">Chewy</label></br>
+        <input type="button" onclick="selectBox()" value="Select a box ">
+      </form>
+      <p id="result">This text will be replaced</p>
+
+      <form>
+        <label for="size">Enter the size</label>
+        <input type ="text" id="size" name="Form Size" value="size"> <br>
+    
+        <label for="price">Enter price</label>
+        <input type ="text" id="price" name="Price"> <br>
+    
+        <input type="button" onclick="updateBox()" id="uBox2" value="Update the box">
+    </form>
+    <p id="uBox">This text will be replaced</p>
+
+
+
+
+
+      <script>
+let candy_box = {};
+function selectBox(){
+    candy_box ={};
+    let darkValue = document.getElementById("darkchoco").checked;
+    let nutValue = document.getElementById("nuts").checked;
+    let chewyValue = document.getElementById("chewy").checked;
+    if(darkValue){
+candy_box.dark = "True";
+    }
+    else {
+        candy_box.dark = " False";
+    }
+    if(nutValue){
+        candy_box.nut ="True";
+    }
+    else {
+        candy_box.nut = "False";
+    }
+    if(chewyValue){
+  candy_box.chewy ="True";
+    }
+    else {
+        candy_box.chewy = "False";
+    }
+    document.getElementById("result").innerHTML=JSON.stringify(candy_box);
+}
+
+function updateBox(){
+    selectBox()
+    let size =document.getElementById("size").value;
+    let priceValue = document.getElementById("price").value;
+    let darkValue = document.getElementById("darkchoco").checked;
+    let nutValue = document.getElementById("nuts").checked;
+    let chewyValue = document.getElementById("chewy").checked;
+    candy_box.size=size;
+    candy_box.price =priceValue;
+    document.getElementById("uBox").innerHTML = JSON.stringify(candy_box);
+
+}
+      </script>
+</body>
+</html> 

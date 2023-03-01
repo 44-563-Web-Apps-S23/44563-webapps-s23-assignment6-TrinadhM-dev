@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>shows currency conversions By Trinadh Machanavazzala</h2>
+
+<form>
+    <!-- Creating two input elements-->
+    <label for="conversion">Enter base amount :</label>
+    <input type ="number" id="basePrice" value=50> <br>
+    <label for="showconversion">Enter the conversion rate :</label>
+    <input type ="text" id="convPrice" name="form1_nick" value="35" autofocus> <br>
+</form>
+<button onclick="Convert()">Want Conversion ? Click Here</button>
+<div class="rate" id="rateId">
+ Conversion rate is :
+</div>
+<br>
+<br>
+<h2>Getting input with radio buttons and checkboxes</h2>
+
+      <form>
+        <input type="radio" id="avgId" name="color" value="red" onclick="chooseOp()" 
+          checked >
+        <label for="avgId">average</label></br>
+      
+        <input type="radio" id="rg1_blue" name="color" onclick="chooseOp()"
+           value="blue">
+        <label for="rg1_blue">max</label></br>
+      
+        <input type="radio" id="rg1_green" name="color" onclick="chooseOp()"
+           value="green">
+        <label for="rg1_green">min</label></br>
+
+        <input type="button" onclick="resolveRadio()" value="Get values from radio group">
+      </form>
+      <div class="display">
+        <p id="conversionRateDisplay">
+
+        </p>
+      </div>
+
+<script> 
+let redOpt;
+let blueOpt;
+let greenOpt;
+ function Convert(){
+    let toShow ="";
+    var basePrice =document.querySelector('#basePrice').value;
+    var conversionPrice = document.querySelector('#convPrice').value;
+    let multiple=1;
+    for(var i=0; i<5; i++){
+        let res=multiple*basePrice*conversionPrice;
+        res=Math.round(res*10)/10;
+        toShow+=`: ${basePrice} is ${res}`
+        respond = `Conversations are ${toShow}`;
+
+        multiple*=2;
+    }
+    document.getElementById("rateId").innerHTML = respond;
+
+}
+//checkBoxes logic in the function chooseOp()
+function chooseOp(){
+    redOpt = document.getElementById("avgId").checked
+    blueOpt = document.getElementById("rg1_blue").checked
+    greenOpt = document.getElementById("rg1_green").checked
+}
+function resolveRadio(){
+  chooseOp();
+  var basePrice =document.querySelector('#basePrice').value;
+  var conversionPrice = document.querySelector('#convPrice').value;
+ if( redOpt == true) {
+  let result = ((parseInt(basePrice )+ parseInt(conversionPrice))/2);
+  document.getElementById("conversionRateDisplay").innerHTML = `Mean is ${result}`;
+
+ }
+
+ else if(blueOpt == true){
+  if(parseInt(basePrice) > parseInt(conversionPrice)) {
+    document.getElementById("conversionRateDisplay").innerHTML = `Maximum value is ${basePrice}`;
+  }
+  else
+  document.getElementById("conversionRateDisplay").innerHTML = `Maximum value is ${conversionPrice}`;
+}
+else {
+  if(parseInt(basePrice) < parseInt(conversionPrice)){
+    console.log(basePrice);
+    document.getElementById("conversionRateDisplay").innerHTML = `Minimum value is ${basePrice}`;
+  }
+  else if(conversionPrice < basePrice) {
+      document.getElementById("conversionRateDisplay").innerHTML = `Minimum value is ${conversionPrice}`;
+      console.log(conversionPrice);
+  }
+  else {
+    document.getElementById("conversionRateDisplay").innerHTML = `Base Price and Conversion rate should not be same `;
+  }
+ 
+}
+}
+</script>
+
+</body>
+</html> 
